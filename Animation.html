@@ -4,21 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Evolution</title>
+    <style>
+        .absolutePos {
+            position:absolute;
+        }
+
+        .evo_stage {
+            left: 500px;
+            visibility: hidden;
+        }
+    </style>
 </head>
     <body>
-        <img src="images/bookshelf.png" alt="bookshelf" style="position:absolute;width:247px;height:453px;">
-        <img id="bookRed" class="book" src="images/redBook.png" alt="redBook" style=" width:75px;height:65px;">
-        <img id="bookBlue" class="book" src="images/blueBook.png" alt="blueBook" style=" width:75px;height:75px;">
-        <img id="bookGreen" class="book" src="images/greenBook.png" alt="greenBook" style="width:65px;height:75px;">
+        <img class="absolutePos" src="images/bookshelf.png" alt="bookshelf" style="width:247px;height:453px;">
+        <img id="bookRed" class="book absolutePos" src="images/redBook.png" alt="redBook" style=" width:75px;height:65px;">
+        <img id="bookBlue" class="book absolutePos" src="images/blueBook.png" alt="blueBook" style=" width:75px;height:75px;">
+        <img id="bookGreen" class="book absolutePos" src="images/greenBook.png" alt="greenBook" style=" width:65px;height:75px;">
 
-        <img class="evo_stage" src="images/evo_4.png" alt="stage5" style="
-                                                                    width:240px;height:490px;">
-        <img class="evo_stage" src="images/evo_3.png" alt="stage4" style="top: 45px; width:247px;height:453px;">
-        <img class="evo_stage" src="images/evo_2.png" alt="stage3" style="top: 45px; width:247px;height:453px;">
-        <img class="evo_stage" src="images/evo_1.png" alt="stage2" style="top: 45px; width:247px;height:453px;">
-        <img class="evo_stage" src="images/evo_0.png" alt="stage1" style="top: 40px; visibility:visible; width:247px;height:453px;">
+        <img class="evo_stage absolutePos" src="images/evo_4.png" alt="stage5" >
+        <img class="evo_stage absolutePos" src="images/evo_3.png" alt="stage4" >
+        <img class="evo_stage absolutePos" src="images/evo_2.png" alt="stage3" >
+        <img class="evo_stage absolutePos" src="images/evo_1.png" alt="stage2" >
+        <img class="evo_stage absolutePos" src="images/evo_0.png" alt="stage1" >
 
-        <p><button id="button" onclick="letsRead()" style="margin-top: 500px;" >Read!</button></p> 
+        <p><button id="button" onclick="letsRead()">Read!</button></p> 
 
         <script>
             let bookRed = document.getElementById("bookRed"); // store each book's img
@@ -27,13 +36,16 @@
 
             function letsRead() { // MAIN function, is called when the button is clicked
                 document.getElementById("button").disabled = true;
+
+                setBookPos(bookRed);
+                setBookPos(bookBlue);
+                setBookPos(bookGreen);
             }
 
             function setBookPos(book) {
                 let top = Math.floor((Math.random() * 170) + 150); //random start position
                 let left = Math.floor((Math.random() * 190) + 1);  //of the book
-            
-                book.style.visibility = "visible";
+
                 book.style.top = top + "px";
                 book.style.left = left + "px";
             }
