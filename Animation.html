@@ -38,6 +38,10 @@
             let bookBlue = document.getElementById("bookBlue"); // from the document
             let bookGreen = document.getElementById("bookGreen");// in variables
 
+            let evo_stages = document.getElementsByClassName("evo_stage"); // contains 5 images "evo..png"
+            let stage = evo_stages.length - 1; // first image  is in the last position in the array
+            let opacity = 1; // changes the opacity of the images
+
             function letsRead() { // MAIN function, is called when the button is clicked
                 document.getElementById("button").disabled = true;
 
@@ -59,6 +63,7 @@
 
                 if (pos >= 555) { //after each book hit the stage
                     setBookPos(book); //move book to the begining
+                    changeOpacity();
 
                 } else { //otherwise move the book to the right
                     pos = pos + 2;
@@ -73,6 +78,20 @@
 
                 book.style.top = top + "px";
                 book.style.left = left + "px";
+            }
+
+            function changeOpacity(){
+                if (stage >= 0){ 
+                    if(opacity <= 0){ 
+                        stage--; // new stage (image)
+                        evo_stages[stage].style.visibility = "visible"; // make it visible
+                        opacity = 1; 
+                    } else {
+                        opacity = opacity - 0.25; //after 4 hits image will disappear
+                        
+                        evo_stages[stage].style.opacity = opacity;
+                    }
+	}
             }
         </script>
     </body>
