@@ -27,7 +27,7 @@
         <img class="evo_stage absolutePos" src="images/evo_1.png" alt="stage2" >
         <img class="evo_stage absolutePos" src="images/evo_0.png" alt="stage1" >
 
-        <p><button id="button" onclick="letsRead()">Read!</button></p> 
+        <p><button id="button" onclick="letsRead()" style="margin-top: 500px;">Read!</button></p> 
 
         <script>
             let bookRed = document.getElementById("bookRed"); // store each book's img
@@ -40,6 +40,27 @@
                 setBookPos(bookRed);
                 setBookPos(bookBlue);
                 setBookPos(bookGreen);
+
+                let id = setInterval(frame, 10); // replay frame() every 10 miliseconds
+            }
+
+            function frame (){
+                throwBook(bookRed);
+                throwBook(bookBlue);
+                throwBook(bookGreen);
+            }
+
+            function throwBook(book){
+                let pos = book.offsetLeft;
+
+                if (pos >= 555) { //after each book hit the stage
+                    setBookPos(book); //move book to the begining
+
+                } else { //otherwise move the book to the right
+                    pos = pos + 3;
+                    book.style.left = pos + "px";
+                    book.style.transform = "rotate(" + pos*1.5 + "deg)";
+                } 
             }
 
             function setBookPos(book) {
