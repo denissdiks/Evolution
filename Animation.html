@@ -10,8 +10,12 @@
         }
 
         .evo_stage {
-            left: 500px;
+            left: 555px;
             visibility: hidden;
+        }
+
+        .first_stage {
+            visibility: visible;
         }
     </style>
 </head>
@@ -25,7 +29,7 @@
         <img class="evo_stage absolutePos" src="images/evo_3.png" alt="stage4" >
         <img class="evo_stage absolutePos" src="images/evo_2.png" alt="stage3" >
         <img class="evo_stage absolutePos" src="images/evo_1.png" alt="stage2" >
-        <img class="evo_stage absolutePos" src="images/evo_0.png" alt="stage1" >
+        <img class="evo_stage first_stage absolutePos" src="images/evo_0.png" alt="stage1" >
 
         <p><button id="button" onclick="letsRead()" style="margin-top: 500px;">Read!</button></p> 
 
@@ -57,7 +61,7 @@
                     setBookPos(book); //move book to the begining
 
                 } else { //otherwise move the book to the right
-                    pos = pos + 3;
+                    pos = pos + 2;
                     book.style.left = pos + "px";
                     book.style.transform = "rotate(" + pos*1.5 + "deg)";
                 } 
