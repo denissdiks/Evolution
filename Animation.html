@@ -88,6 +88,11 @@
                         opacity = 1; 
                     } else {
                         opacity = opacity - 0.25; //after 4 hits image will disappear
+
+                        if(opacity <= 0){ // if previous image is unseen
+                                        // make visible the next one
+                        evo_stages[stage-1].style.visibility = "visible";
+			}
                         
                         evo_stages[stage].style.opacity = opacity;
                     }
