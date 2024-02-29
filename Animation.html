@@ -80,8 +80,11 @@
 
             function bookFall(book){
                 let pos = book.offsetTop;
-                pos = pos + 1.5;
-		        book.style.top = pos + "px";
+                
+                if (pos < 410){ // make book fall until it hits the floor (top:410px)
+                    pos = pos + 1.5;
+		            book.style.top = pos + "px";
+                }
             }
 
             function setBookPos(book) {
