@@ -53,9 +53,15 @@
             }
 
             function frame (){
-                throwBook(bookRed);
-                throwBook(bookBlue);
-                throwBook(bookGreen);
+                if (stage != 0){ //if not the last image (stage)
+                    throwBook(bookRed);
+                    throwBook(bookBlue);
+                    throwBook(bookGreen);
+                } else {
+                    bookFall(bookRed);
+                    bookFall(bookBlue);
+                    bookFall(bookGreen);
+                }
             }
 
             function throwBook(book){
@@ -66,10 +72,16 @@
                     changeOpacity();
 
                 } else { //otherwise move the book to the right
-                    pos = pos + 2;
+                    pos = pos + 3;
                     book.style.left = pos + "px";
                     book.style.transform = "rotate(" + pos*1.5 + "deg)";
                 } 
+            }
+
+            function bookFall(book){
+                let pos = book.offsetTop;
+                pos = pos + 1.5;
+		        book.style.top = pos + "px";
             }
 
             function setBookPos(book) {
