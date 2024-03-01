@@ -1,0 +1,11 @@
+.absolutePos {
+    position:absolute;
+}
+
+.evo_stage {
+    left: 555px;
+}
+
+.evo_stage:not(img.first_stage) {
+    visibility: hidden;
+}
