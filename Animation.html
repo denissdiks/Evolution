@@ -38,6 +38,8 @@
             let bookBlue = document.getElementById("bookBlue"); // from the document
             let bookGreen = document.getElementById("bookGreen");// in variables
 
+            const floorLevel = 410; // (top:410px)
+
             let evo_stages = document.getElementsByClassName("evo_stage"); // contains 5 images "evo..png"
             let stage = evo_stages.length - 1; // first image  is in the last position in the array
             let opacity = 1; // changes the opacity of the images
@@ -79,12 +81,18 @@
             }
 
             function bookFall(book){
-                let pos = book.offsetTop;
                 
-                if (pos < 410){ // make book fall until it hits the floor (top:410px)
-                    pos = pos + 1.5;
-		            book.style.top = pos + "px";
+                if (!isItemOnTheFloor(book.offsetTop, floorLevel)){ // make book fall until it hits the floor (top:410px)
+		            book.style.top = (book.offsetTop + 1.5) + "px";
                 }
+            }
+
+            function isItemOnTheFloor(itemPos, floorLevel){
+                if (itemPos < floorLevel){
+                    return false;
+                }
+                
+                return true;
             }
 
             function setBookPos(book) {
