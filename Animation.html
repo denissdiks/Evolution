@@ -11,11 +11,10 @@
 
         .evo_stage {
             left: 555px;
-            visibility: hidden;
         }
 
-        .first_stage {
-            visibility: visible;
+        .evo_stage:not(img.first_stage) {
+            visibility: hidden;
         }
     </style>
 </head>
@@ -44,6 +43,9 @@
             let stage = evo_stages.length - 1; // first image  is in the last position in the array
             let opacity = 1; // changes the opacity of the images
 
+            let speed = 1; // acceleration in flyAway()
+            let goUp = false; // is used in flyAway(), "true" allows to go up
+
             function letsRead() { // MAIN function, is called when the button is clicked
                 document.getElementById("button").disabled = true;
 
@@ -63,6 +65,12 @@
                     bookFall(bookRed);
                     bookFall(bookBlue);
                     bookFall(bookGreen);
+
+                    if (isItemOnTheFloor(bookRed.offsetTop, floorLevel) &&
+                    isItemOnTheFloor(bookBlue.offsetTop, floorLevel) &&
+                    isItemOnTheFloor(bookGreen.offsetTop, floorLevel)){
+                        flyAway();
+                    }
                 }
             }
 
@@ -93,6 +101,17 @@
                 }
                 
                 return true;
+            }
+
+            function flyAway(){
+                if(speed <= 1 && speed > -4 && goUp == false){
+                    speed = speed - 0.3; //acceleration to go down
+                    evo_stages[0].style.top = evo_stages[0].offsetTop - speed + "px";
+                } else{
+                    goUp = true; // allows to go up
+                    speed = speed + 0.1; //acceleration to go up
+                    evo_stages[0].style.top = evo_stages[0].offsetTop - speed + "px";
+                }
             }
 
             function setBookPos(book) {
