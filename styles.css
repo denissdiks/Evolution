@@ -2,6 +2,10 @@
     position:absolute;
 }
 
+.book {
+    visibility: hidden;
+}
+
 .evo_stage {
     left: 555px;
 }

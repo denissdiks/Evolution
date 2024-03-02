@@ -18,6 +18,10 @@ let bookRed = document.getElementById("bookRed"); // store each book's img
                 setBookPos(bookBlue);
                 setBookPos(bookGreen);
 
+                bookRed.style.visibility = "visible";
+                bookBlue.style.visibility = "visible";
+                bookGreen.style.visibility = "visible";
+
                 let id = setInterval(frame, 10); // replay frame() every 10 miliseconds
             }
 
@@ -72,8 +76,11 @@ let bookRed = document.getElementById("bookRed"); // store each book's img
                 if(speed <= 1 && speed > -4 && goUp == false){
                     speed = speed - 0.3; //acceleration to go down
                     evo_stages[0].style.top = evo_stages[0].offsetTop - speed + "px";
+
+                    if (speed <= -4){
+                        goUp = true; // allows to go up
+                    }
                 } else{
-                    goUp = true; // allows to go up
                     speed = speed + 0.1; //acceleration to go up
                     evo_stages[0].style.top = evo_stages[0].offsetTop - speed + "px";
                 }
