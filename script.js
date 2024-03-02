@@ -11,6 +11,8 @@ let bookRed = document.getElementById("bookRed"); // store each book's img
             let speed = 1; // acceleration in flyAway()
             let goUp = false; // is used in flyAway(), "true" allows to go up
 
+            let id; //for setInterval()
+
             function letsRead() { // MAIN function, is called when the button is clicked
                 document.getElementById("button").disabled = true;
 
@@ -22,7 +24,7 @@ let bookRed = document.getElementById("bookRed"); // store each book's img
                 bookBlue.style.visibility = "visible";
                 bookGreen.style.visibility = "visible";
 
-                let id = setInterval(frame, 10); // replay frame() every 10 miliseconds
+                id = setInterval(frame, 10); // replay frame() every 10 miliseconds
             }
 
             function frame (){
@@ -39,6 +41,10 @@ let bookRed = document.getElementById("bookRed"); // store each book's img
                     isItemOnTheFloor(bookBlue.offsetTop, floorLevel) &&
                     isItemOnTheFloor(bookGreen.offsetTop, floorLevel)){
                         flyAway();
+                    }
+
+                    if (evo_stages[stage].offsetTop < -450){ //if the last image is not on a display anymore
+                        clearInterval(id);
                     }
                 }
             }
